@@ -10,6 +10,7 @@ labels: ''
 A clear and concise description of what the bug is.
 
 - python version:
+- discord.js version:
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
