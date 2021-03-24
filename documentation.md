@@ -1,2 +1,0 @@
-# Discord bot Documentation 
-
