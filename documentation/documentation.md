@@ -34,13 +34,13 @@ Paste the URL into your browser, choose a server to invite the bot to, and click
 
 To add the bot, your account needs "Manage Server" permissions.
 
-Now that you've created the bot user. 
+Now that you've created the bot user. we'll start writing the Python code for the bot. 
 
 You did it my boy🤩. Well Done! 👏🙌
 
 <img src="well.webp" width = "1000" height = "400">
 
-we'll start writing the Python code for the bot.
+
 
 
  
