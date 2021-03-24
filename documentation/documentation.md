@@ -9,11 +9,11 @@
 
 ![image](https://user-images.githubusercontent.com/72253236/112264499-fea2d780-8c96-11eb-8fef-9cabacddfedd.png)
 
-4. Give a name to the bot and click create.
+4. Give a name to the bot and click the "create" .
 
 ![image](https://user-images.githubusercontent.com/72253236/112264683-3c9ffb80-8c97-11eb-9e1c-2ac482721c69.png)
 
-5. Go to the bot tab and click on the "Add Bot"
+5. Go to the bot tab and click the "Add Bot"
 
 ![image](https://user-images.githubusercontent.com/72253236/112265140-ff883900-8c97-11eb-9e1e-d799a3c8f2c4.png)
 
