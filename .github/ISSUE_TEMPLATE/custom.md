@@ -1,6 +1,9 @@
 Name: Custom issues
 
 about: Describe the issue you want to discuss
-title: 
+
+title:
+
 labels: ''
+
 assignees: ''
