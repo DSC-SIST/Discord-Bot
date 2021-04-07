@@ -1,10 +1,11 @@
 # import discord package 
 # pip install discord
 import discord
-import os
-import json
-from urllib import request
 from dotenv import load_dotenv
+import json
+import os
+from urllib import request
+
 
 load_dotenv()
 
@@ -12,7 +13,7 @@ JOKE_API = os.getenv("JOKE_API")
 TOKEN = os.getenv("TOKEN")
 GENERAL = os.getenv("GENERAL")
 
-# this is our bot 
+# this is our bot
 bot = discord.Client()
 
 # api request for joke 
@@ -42,7 +43,7 @@ async def on_ready():
     print("the bot is online!")
     # fetching the general channel 
     general = bot.get_channel(int(GENERAL))
-    print(general)
+    # print(general)
     # sends in general channel
     await general.send("Hello, Discord! , i am your assistant")
 
@@ -60,6 +61,21 @@ async def on_message(message):
     if message.content == "!joke":
         joke = getJoke()
         await message.channel.send(joke)
+
+    if message.author == bot.user:
+        return
+
+    if message.content.startswith('hello'):
+        await message.channel.send('Hello!')
+
+@bot.event
+async def on_member_join(member):
+    guild_id = int(os.getenv('GUILD_ID'))
+    channel_id = int(os.getenv('WELCOME_CHANNEL_ID'))
+    guild = bot.get_guild(guild_id)
+    channel = guild.get_channel(channel_id)
+    await channel.send(f"Welcome to the server {member.mention} ! :partying_face:")
+    await member.send(f"Welcome to the {guild.name} server, {member.name}! :partying_face:")
 
 # run the bot server by passing the token in the string 
 bot.run(TOKEN)
