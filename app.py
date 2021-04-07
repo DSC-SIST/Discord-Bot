@@ -1,15 +1,23 @@
 # import discord package 
 # pip install discord
 import discord
-from urllib import request
+import os
 import json
+from urllib import request
+from dotenv import load_dotenv
+
+load_dotenv()
+
+JOKE_API = os.getenv("JOKE_API")
+TOKEN = os.getenv("TOKEN")
+GENERAL = os.getenv("GENERAL")
 
 # this is our bot 
 bot = discord.Client()
 
 # api request for joke 
 def getJoke():
-    url = request.urlopen("https://official-joke-api.appspot.com/jokes/programming/random")
+    url = request.urlopen(JOKE_API)
     data = url.read()
     jsonData = json.loads(data)
     # print(jsonData)
@@ -33,7 +41,8 @@ async def on_ready():
     # prints in command line 
     print("the bot is online!")
     # fetching the general channel 
-    general = bot.get_channel(818183101007659072)
+    general = bot.get_channel(int(GENERAL))
+    print(general)
     # sends in general channel
     await general.send("Hello, Discord! , i am your assistant")
 
@@ -53,4 +62,4 @@ async def on_message(message):
         await message.channel.send(joke)
 
 # run the bot server by passing the token in the string 
-bot.run("Token")
+bot.run(TOKEN)
