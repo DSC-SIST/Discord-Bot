@@ -1,16 +1,11 @@
 ---
-name: new-task-template
-about: Assigning new tasks
-title: ''
-labels: ''
+name: New Task Template
+about: The template to assign issues to Members
+title: "[Feature] "
+labels: 'new-task'
 assignees: ''
 
 ---
-
-Name | About|Title|Labels  |Assignees
-  -----|------ | ------|------|------------
-New Task Template| The template to assign issues to Members|[Feature] | new-task
-
 
 ## Feature :rocket:
 
