@@ -48,7 +48,7 @@ async def on_member_join(member):
     brief="Use to check if a link is malicious or not", 
     help="Uses google safe browsing API to check if a link is safe or not.\nHow to use:\n$checklink www.TheLink.com")
 async def checklinkfunc(ctx, link):
-    s = SafeBrowsing('GOOGLE_SAFE_BROWSING_API_KEY')
+    s = SafeBrowsing(os.getenv('GOOGLE_SAFE_BROWSING_API_KEY'))
     regex=r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
     url=re.findall(regex,link)
     try:
