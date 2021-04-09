@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: ''
-labels: ''
+labels: 'feature-request'
 assignees: ''
 
 ---
@@ -17,4 +17,9 @@ A clear and concise description of what you want to happen.
 A clear and concise description of any alternative solutions or features you've considered.
 
 **Additional context**
+
 Add any other context or screenshots about the feature request here.
+
+**Screenshots/Proof of Concept**
+
+<!-- Use a website like Imgur to add your image, alternatively you can also upload from your device as well.-->
