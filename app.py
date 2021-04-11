@@ -7,6 +7,7 @@ import os
 load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
+intents.reactions = True
 bot = discord.Client(intents=intents)
 
 # event listeners 
@@ -27,9 +28,39 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
-
     if message.content.startswith('hello'):
         await message.channel.send('Hello!')
+
+#To add pin message on reaction
+@bot.event
+async def on_reaction_add(reaction, user):
+    if reaction.emoji=='📌' and user.id!=bot.user.id:
+        try: # To prevent errors in case of lack of permission or HTTP Exception
+            await reaction.message.pin(reason='Requested by '+str(user.id))
+        except:
+            pass
+    return
+
+#To monitor and add/remove reaction to pins
+@bot.event
+async def on_message_edit(before,after):
+    if after.author.id == bot.user.id:
+        return
+    if not before.pinned and after.pinned:
+        #To prevent bot from reacting to already reacted messages
+        for i in after.reactions:
+            if i.emoji=='📌':
+                return
+        try: # To prevent errors in case of lack of permission or HTTP Exception
+            await after.add_reaction("📌")
+        except:
+            pass
+    if before.pinned and not after.pinned:
+        try: # To prevent errors in case of lack of permission or HTTP Exception
+            await after.remove_reaction("📌",bot.user)
+        except:
+            pass
+    return
 
 @bot.event
 async def on_member_join(member):
