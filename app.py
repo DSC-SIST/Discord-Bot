@@ -4,7 +4,8 @@ import datetime
 import discord
 from dotenv import load_dotenv
 import os
-from wordnik import *
+import urllib
+import wordnik
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -22,13 +23,13 @@ def wordOfDay():
 	y=word['note']
 	note=bytes(y)
 	meaning=word['definitions'][0]['text']
-	# print "*****************************************"
-	# print "The word of the day is: "+word_of_the_day
-	# print "Meaning: "+meaning
-	# print "Note : "+note
-	# print "*****************************************"
-    result = f"The word of the day is:{word_of_the_day}""\n"f"Meaning:{meaning}"
-    return result
+	print("*****************************************")
+	print("The word of the day is: "+word_of_the_day)
+	print("Meaning: "+meaning)
+	# print("Note : "+note)
+	print("*****************************************")
+    # result = f"The word of the day is : {word_of_the_day}" "\n" f"Meaning : {meaning} "
+    # return result
 wordOfDay()
 
 # event listeners 
