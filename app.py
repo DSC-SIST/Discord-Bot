@@ -3,8 +3,9 @@
 import datetime
 import discord
 from dotenv import load_dotenv
+import json
 import os
-import urllib
+from urllib import request
 import wordnik
 
 load_dotenv()
@@ -16,18 +17,36 @@ def wordOfDay():
 	now=datetime.datetime.now()
 	today=str(now.year)+'-'+str(now.month)+'-'+str(now.day)
 	url='http://api.wordnik.com:80/v4/words.json/wordOfTheDay?date='+today+'&api_key=d52b63b6880f17811310d0fbd3b0d3a8ef163a248f58dc831'
-	response=urllib.urlopen(url)
-	word=json.load(response)
+	response=request.urlopen(url)
+    data=response.read()
+	jsonData=json.loads(data)
+    print(jsonData)
 	x=word['word']
-	word_of_the_day=bytes(x)
-	y=word['note']
-	note=bytes(y)
-	meaning=word['definitions'][0]['text']
-	print("*****************************************")
-	print("The word of the day is: "+word_of_the_day)
-	print("Meaning: "+meaning)
-	# print("Note : "+note)
-	print("*****************************************")
+    # print(x)
+	# # word_of_the_day=bytes(x)
+	# y=word['note']
+	# # note=bytes(y)
+	# meaning=word['definitions'][0]['text']
+	# print("*****************************************")
+	# print("The word of the day is: "+word_of_the_day)
+	# print("Meaning: "+meaning)
+	# # print("Note : "+note)
+	# print("*****************************************")
+
+    # url = request.urlopen(JOKE_API)
+    # data = url.read()
+    # jsonData = json.loads(data)
+    # # print(jsonData)
+    # for joke in jsonData:
+    #     setup = joke["setup"]
+    #     punchline = joke["punchline"]
+    #     laughingFace = "\U0001F606"
+    # joke = f"setup: {setup}" "\n" f"Punchline : {punchline}\t{laughingFace} "
+    # # print(f"Setup : {setup}")
+    # # print(f"Punchline : {punchline}")
+    # return joke
+# getJoke()
+
     # result = f"The word of the day is : {word_of_the_day}" "\n" f"Meaning : {meaning} "
     # return result
 wordOfDay()
