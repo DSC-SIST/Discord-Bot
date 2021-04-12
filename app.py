@@ -14,42 +14,19 @@ intents.members = True
 bot = discord.Client(intents=intents)
 
 def wordOfDay():
-	now=datetime.datetime.now()
-	today=str(now.year)+'-'+str(now.month)+'-'+str(now.day)
-	url='http://api.wordnik.com:80/v4/words.json/wordOfTheDay?date='+today+'&api_key=d52b63b6880f17811310d0fbd3b0d3a8ef163a248f58dc831'
-	response=request.urlopen(url)
+    now=datetime.datetime.now()
+    today=str(now.year)+'-'+str(now.month)+'-'+str(now.day)
+    url=os.getenv('WORD_MEANING_API1')+today+os.getenv("WORD_MEANING_API2")
+    response=request.urlopen(url)
     data=response.read()
-	jsonData=json.loads(data)
-    print(jsonData)
-	x=word['word']
-    # print(x)
-	# # word_of_the_day=bytes(x)
-	# y=word['note']
-	# # note=bytes(y)
-	# meaning=word['definitions'][0]['text']
-	# print("*****************************************")
-	# print("The word of the day is: "+word_of_the_day)
-	# print("Meaning: "+meaning)
-	# # print("Note : "+note)
-	# print("*****************************************")
-
-    # url = request.urlopen(JOKE_API)
-    # data = url.read()
-    # jsonData = json.loads(data)
-    # # print(jsonData)
-    # for joke in jsonData:
-    #     setup = joke["setup"]
-    #     punchline = joke["punchline"]
-    #     laughingFace = "\U0001F606"
-    # joke = f"setup: {setup}" "\n" f"Punchline : {punchline}\t{laughingFace} "
-    # # print(f"Setup : {setup}")
-    # # print(f"Punchline : {punchline}")
-    # return joke
-# getJoke()
-
-    # result = f"The word of the day is : {word_of_the_day}" "\n" f"Meaning : {meaning} "
-    # return result
-wordOfDay()
+    jsonData=json.loads(data)
+    for word in jsonData:
+        w=jsonData["word"]
+        m=jsonData['definitions'][0]['text']
+        n=jsonData["note"]
+    word = f"Word: {w}""\n"f"Meaning: {m}""\n"f"Note: {n}"
+    return word
+# print(wordOfDay())
 
 # event listeners 
 @bot.event  
@@ -76,6 +53,7 @@ async def on_message(message):
     if message.content == "$word":
         res=wordOfDay()
         await message.channel.send(res)
+    
 
 @bot.event
 async def on_member_join(member):
