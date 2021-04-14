@@ -15,6 +15,17 @@
         "maintenance",
         "mentoring"
       ]
+    },
+    {
+      "login": "KamalDGRT",
+      "name": "Kamal Sharma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43444282?v=4",
+      "profile": "https://www.linkedin.com/in/kamaldgrt/",
+      "contributions": [
+        "doc",
+        "maintenance",
+        "mentoring"
+      ]
     }
   ],
   "contributorsPerLine": 7,
