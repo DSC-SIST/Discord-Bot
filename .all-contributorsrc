@@ -1,0 +1,37 @@
+{
+  "files": [
+    "CONTRIBUTORS.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "HarshCasper",
+      "name": "Harsh Mishra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47351025?v=4",
+      "profile": "http://harshcasper.github.io",
+      "contributions": [
+        "doc",
+        "maintenance",
+        "mentoring"
+      ]
+    },
+    {
+      "login": "KamalDGRT",
+      "name": "Kamal Sharma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43444282?v=4",
+      "profile": "https://www.linkedin.com/in/kamaldgrt/",
+      "contributions": [
+        "doc",
+        "maintenance",
+        "mentoring"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Discord-Bot",
+  "projectOwner": "DSC-SIST",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
