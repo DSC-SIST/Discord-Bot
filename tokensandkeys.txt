@@ -1,0 +1,16 @@
+BOT_TOKEN=""
+BOT_PREFIX=""
+GENIUSTOKEN=""
+GOOGLE_SAFE_BROWSING_API_KEY=""
+
+
+
+
+
+
+
+
+#Add the following tokens as environment variables before running. Run setEnvVar.sh on the same window that you are going to run bot from.
+#Heroku supports adding direct environment variables in its config panel and would persist across different builds
+#No need for dotenv
+#windows people just set these variables in the shell before running using SET <VARIABLE_NAME>="<VALUE>". no fancy scripts for yall.
