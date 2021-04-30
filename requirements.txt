@@ -1,0 +1,7 @@
+bs4
+discord
+chat_exporter
+DiscordUtils
+lxml
+python_dotenv
+pysafebrowsing
