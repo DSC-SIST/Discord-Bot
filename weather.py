@@ -1,7 +1,6 @@
 import requests
 import discord
 from discord.ext import commands
-api_key = "71b0ae513cc0b2caabbaef60d40373b5"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 client = commands.Bot(command_prefix='!')
 try:
@@ -22,8 +21,8 @@ try:
             z = x["weather"]
             weather_description = z[0]["description"]
             weather_description = z[0]["description"]
-            embed = discord.Embed(title=f"Weather in {city_name}",color=ctx.guild.me.top_role.color,timestamp=ctx.message.created_at,)
-            embed.add_field(name="Descripition", value=f"**{weather_description}**", inline=False)
+            embed = discord.Embed(title=f"Weather in {city_name.capitalize()}",color=ctx.guild.me.top_role.color,timestamp=ctx.message.created_at,)
+            embed.add_field(name="Descripition", value=f"**{weather_description.capitalize()}**", inline=False)
             embed.add_field(name="Temperature(C)", value=f"**{current_temperature_celsiuis}°C**", inline=False)
             embed.add_field(name="Humidity(%)", value=f"**{current_humidity}%**", inline=False)
             embed.add_field(name="Atmospheric Pressure(hPa)", value=f"**{current_pressure}hPa**", inline=False)
