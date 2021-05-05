@@ -1,43 +1,38 @@
-# import discord package 
-# pip install discord
-import discord
-from dotenv import load_dotenv
-import os
+# Built-In Libraries/Modules/Packages
+from os import listdir
+import traceback
 
-load_dotenv()
-intents = discord.Intents.default()
-intents.members = True
-bot = discord.Client(intents=intents)
+# Third Party Libraries/Modules/Packages
+from discord import ClientException, Intents
+from discord.ext import commands
 
-# event listeners 
-@bot.event  
-# defining function for on_ready function
-# on_ready is predefined function under discord package 
-async def on_ready():
+# User Defined Libraries/Modules/Packages
+from cogs.utils.settings import Settings
 
-    # prints in command line 
-    print("Hi! I am online!")
-    channel_id = int(os.getenv('WELCOME_CHANNEL_ID'))
-    # fetching the general channel 
-    general = bot.get_channel(channel_id)
-    await general.send("Hello, Discord!, I am your assistant!")
+intents = Intents.all()
 
-# similarly we also have on_message event
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
+# Initialsing bot with the prefix as `!` and 
+# removing the default Help Command
+bot = commands.Bot(
+    command_prefix = "!",
+    help_command = None,
+    intents = intents
+)
 
-    if message.content.startswith('hello'):
-        await message.channel.send('Hello!')
+# To import and Load all Modules
+def loadTheCogs(bot):
+    cogs_dir = "cogs"
+    # Getting all the python files present in `cogs` to a List
+    pythonFiles = [File for File in listdir(cogs_dir) if File.endswith(".py")]
 
-@bot.event
-async def on_member_join(member):
-    guild_id = int(os.getenv('GUILD_ID'))
-    channel_id = int(os.getenv('WELCOME_CHANNEL_ID'))
-    guild = bot.get_guild(guild_id)
-    channel = guild.get_channel(channel_id)
-    await channel.send(f"Welcome to the server {member.mention} ! :partying_face:")
-    await member.send(f"Welcome to the {guild.name} server, {member.name}! :partying_face:")
+    for File in pythonFiles:
+        extension = File.replace('.py', '')
+        try:
+            bot.load_extension(cogs_dir + "." + extension)
+        except (ClientException, ModuleNotFoundError):
+            print(f'Failed to load extension {extension}.')
+            traceback.print_exc()
 
-bot.run(os.getenv('TOKEN'))
+if __name__ == "__main__":
+    loadTheCogs(bot)
+    bot.run(Settings().SECRETS['DISCORD_TOKEN'])
