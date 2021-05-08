@@ -18,22 +18,22 @@ class Chat(commands.Cog):
         if payload.emoji.name == '\N{PUSHPIN}' and payload.user_id != self.bot.user.id:
             # To prevent errors in case of lack of permission or HTTP Exception
             try:
-                channel=self.bot.get_channel(payload.channel_id)
-                message=await channel.fetch_message(payload.message_id)
+                channel = self.bot.get_channel(payload.channel_id)
+                message = await channel.fetch_message(payload.message_id)
                 await message.pin(reason="Requested by "+str(payload.user_id))
             except:
                 pass
         return
-        
+
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
         if payload.emoji.name == '\N{PUSHPIN}' and payload.user_id != self.bot.user.id:
             try:
-               channel=self.bot.get_channel(payload.channel_id)
-               message=await channel.fetch_message(payload.message_id)
-               await message.unpin(reason="Requested by "+str(payload.user_id))
+                channel = self.bot.get_channel(payload.channel_id)
+                message = await channel.fetch_message(payload.message_id)
+                await message.unpin(reason="Requested by "+str(payload.user_id))
             except:
-               pass
+                pass
         return
 
     @commands.Cog.listener()
