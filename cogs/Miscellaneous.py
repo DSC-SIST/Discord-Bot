@@ -1,8 +1,10 @@
 # Third Party Libraries/Modules/Packages
+from discord import Embed, Color
 from discord.ext import commands
 
 # User Defined Libraries/Modules/Packages
 from .utils.misc import checklinkfunc
+from .utils.misc import getJoke
 
 
 class MiscCommands(commands.Cog):
@@ -51,6 +53,19 @@ class MiscCommands(commands.Cog):
     async def link_check_func(self, ctx, link):
         msgtosend = checklinkfunc(link)
         await ctx.channel.send(msgtosend)
+
+    @commands.command(
+        name="getjoke",
+        aliases=["joke"]
+    )
+    async def get_joke(self, ctx):
+        joketosend = getJoke()
+        try:
+            setup = str(joketosend['setup'])
+            punchline = str(joketosend['punchline'])
+            await ctx.send(f"{setup}\n{punchline}")
+        except:
+            pass
 
 
 def setup(bot):

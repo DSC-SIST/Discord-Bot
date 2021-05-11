@@ -1,7 +1,9 @@
 # Built-In Libraries/Modules/Packages
+from json import loads
 from re import findall
 
 # Third Party Libraries/Modules/Packages
+from urllib.request import urlopen
 from pysafebrowsing import SafeBrowsing
 
 # User Defined Libraries/Modules/Packages
@@ -33,3 +35,14 @@ def checklinkfunc(link):
         message = "There was no link in your command\n"
         message += "Example command: ``checklink <pastethelinkhere>``"
         return message
+
+
+def getJoke():
+    url = Settings().SECRETS["JOKE_API"]
+    response = urlopen(url)
+    data = response.read()
+    jsonData = loads(data)
+    return {
+        "setup": str(jsonData[0]['setup']).capitalize(),
+        "punchline": str(jsonData[0]['punchline']).capitalize()
+    }
