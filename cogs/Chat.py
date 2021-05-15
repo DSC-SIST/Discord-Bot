@@ -37,28 +37,22 @@ class Chat(commands.Cog):
         return
 
     @commands.Cog.listener()
-    async def on_message_edit(self, before, after):
-        if after.author.id == self.bot.user.id:
-            return
-        if not before.pinned and after.pinned:
-            # To prevent bot from reacting to already reacted messages
-            for i in after.reactions:
-                if i.emoji == '📌':
-                    return
-
-            # To prevent errors in case of lack of permission or HTTP Exception
+    async def on_raw_message_edit(self, payload):
+        message = payload.cached_message
+        if not message:
+            channel = self.bot.get_channel(payload.channel_id)
+            message = await channel.fetch_message(payload.message_id)
+        
+        if payload.data['pinned']:
+            if payload.data['author']['id']!=self.bot.user.id:
+                await message.add_reaction("📌")
+                return
+        if not(payload.data['pinned']):
             try:
-                await after.add_reaction("📌")
-            except:
-                pass
-        if before.pinned and not after.pinned:
-            # To prevent errors in case of lack of permission or HTTP Exception
-            try:
-                await after.remove_reaction("📌", self.bot.user)
+                await message.remove_reaction("📌",self.bot.user)
             except:
                 pass
         return
-
 
 def setup(bot):
     '''
