@@ -1,21 +1,16 @@
 # Third Party Libraries/Modules/Packages
-from discord import Embed, Color
 from discord.ext import commands
 
 # User Defined Libraries/Modules/Packages
-from .utils.misc import checklinkfunc
-from .utils.misc import getJoke
+from .utils.misc import checklinkfunc, getJoke
+
+# Extending the commands.Cog class
 
 
 class MiscCommands(commands.Cog):
-    '''
-    Extending the commands.Cog class for miscellaneous commands.
-    '''
 
+    # The constructor
     def __init__(self, bot):
-        '''
-        The default constructor for MiscCommands class.
-        '''
         self.bot = bot
 
     @commands.command(
@@ -60,16 +55,10 @@ class MiscCommands(commands.Cog):
     )
     async def get_joke(self, ctx):
         joketosend = getJoke()
-        try:
-            setup = str(joketosend['setup'])
-            punchline = str(joketosend['punchline'])
-            await ctx.send(f"{setup}\n{punchline}")
-        except:
-            pass
+        setup = str(joketosend['setup'])
+        punchline = str(joketosend['punchline'])
+        await ctx.send(f"{setup}\n{punchline}")
 
-
+# Following the docs for creating cogs
 def setup(bot):
-    '''
-    Following the docs for creating cogs
-    '''
     bot.add_cog(MiscCommands(bot))
