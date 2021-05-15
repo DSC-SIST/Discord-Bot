@@ -15,6 +15,10 @@ class Chat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
+        """
+        When the user reacts with the pushpin emoji,
+        the Bot will pin that message.
+        """
         if payload.emoji.name == '\N{PUSHPIN}' and payload.user_id != self.bot.user.id:
             # To prevent errors in case of lack of permission or HTTP Exception
             try:
@@ -27,6 +31,10 @@ class Chat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
+        """
+        When the user removes with the pushpin emoji from a message,
+        the Bot will unpin that message.
+        """
         if payload.emoji.name == '\N{PUSHPIN}' and payload.user_id != self.bot.user.id:
             try:
                 channel = self.bot.get_channel(payload.channel_id)
@@ -38,6 +46,10 @@ class Chat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_message_edit(self, payload):
+        """
+        When the user pins the message manually,
+        the Bot will react with a pushpin emoji.
+        """
         message = payload.cached_message
         if not message:
             channel = self.bot.get_channel(payload.channel_id)
@@ -53,6 +65,7 @@ class Chat(commands.Cog):
             except:
                 pass
         return
+
 
 def setup(bot):
     '''
