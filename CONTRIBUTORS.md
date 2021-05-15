@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors ✨
@@ -16,6 +16,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/rajiv8"><img src="https://avatars.githubusercontent.com/u/59121796?v=4?s=100" width="100px;" alt=""/><br /><sub><b>RajivDubey</b></sub></a><br /><a href="https://github.com/DSC-SIST/Discord-Bot/commits?author=rajiv8" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/sukesh02"><img src="https://avatars.githubusercontent.com/u/63833605?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sukesh02</b></sub></a><br /><a href="https://github.com/DSC-SIST/Discord-Bot/commits?author=sukesh02" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Sriram-bb63"><img src="https://avatars.githubusercontent.com/u/71959217?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sriram</b></sub></a><br /><a href="https://github.com/DSC-SIST/Discord-Bot/commits?author=Sriram-bb63" title="Code">💻</a></td>
+    <td align="center"><a href="https://nanna7077.github.io/"><img src="https://avatars.githubusercontent.com/u/62479349?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nannan</b></sub></a><br /><a href="https://github.com/DSC-SIST/Discord-Bot/commits?author=nanna7077" title="Code">💻</a></td>
   </tr>
 </table>
 
