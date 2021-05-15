@@ -1,0 +1,26 @@
+# This file is related to assigning the Project Lead for the PR 
+
+# Enabling add reviewers option
+addReviewers: true
+
+# Setting author as assignees
+addAssignees: author
+
+# A list of reviewers to be added to pull requests (GitHub user name)
+# Reviewer must have admin permission
+reviewers:
+  - HarshCasper 
+  - KamalDGRT
+
+skipKeywords:
+  - wip
+  - draft
+
+# A number of reviewers added to the pull request
+# Set 0 to add all the reviewers (default: 0)
+numberOfReviewers: 0
+
+# A list of assignees, overrides reviewers if set
+# A list of keywords to be skipped the process that add reviewers if pull requests include it
+# skipKeywords:
+#   - wip
